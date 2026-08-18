@@ -216,3 +216,20 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ===============================
+# Kişisel / Geliştirme Ortamı
+# ===============================
+
+# JetBrains IDEs (PyCharm)
+.idea/
+
+# macOS sistem dosyaları
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Geçici ve yedek dosyalar
+*.swp
+*.bak
+*~
