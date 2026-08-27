@@ -30,39 +30,39 @@ Eğer proje klasörünüzde yanlışlıkla `rm -rf .git` komutunu çalıştırı
 
 Yeni dosyalar oluşturulduğunda Git bunları otomatik olarak takip etmez (Untracked files). `git status` çıktısı şu şekilde görünür:
 
-```text
+```diff
 On branch main
 
 No commits yet
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-    .DS_Store
-    .idea/
-    01-Terminal Komutları ve giriş.md
-    02-Git Temelleri.md
+-   .DS_Store
+-   .idea/
+-   01-Terminal Komutları ve giriş.md
+-   02-Git Temelleri.md
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
 Dosyayı staging alanına (sahneye) eklemek için `git add` kullanılır. (Not: Dosya adında boşluk olduğu için tırnak içine alınmalıdır):
 
-```bash
+```powershell
 git add "01-Terminal Komutları ve giriş.md"
 ```
 
 Dosyayı ekledikten sonra `git status` ile durumu tekrar kontrol ettiğimizde çıktı şu şekilde değişir:
 
-```plaintext
+```diff
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
-    new file:   01-Terminal Komutları ve giriş.md
++   new file:   01-Terminal Komutları ve giriş.md
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-    .DS_Store
-    .idea/
-    02-Git Temelleri.md
+-   .DS_Store
+-   .idea/
+-   02-Git Temelleri.md
 ```
 
 Görüldüğü gibi ilk dosya "Changes to be committed" alanına (staging) geçti, diğer dosyalar hala "Untracked" (takip edilmeyen) kısmında bekliyor.
@@ -75,29 +75,29 @@ Commit mesajları büyük önem taşır. "Ne önemi var?" denilebilir ama özell
 
 Örnek commit atımı:
 
-```bash
+```powershell
 git commit -m "docs(01): Add Terminal Commands File"
 ```
 
 Komut çalıştırıldığında terminal çıktısı:
 
-```plaintext
+```diff
 [main (root-commit) 8bcf1d0] docs(01): Add Terminal Commands File
  1 file changed, 76 insertions(+)
- create mode 100644 01-Terminal Komutları ve giriş.md
++ create mode 100644 01-Terminal Komutları ve giriş.md
 ```
 
 Burada `1 file changed, 76 insertions(+)` ifadesi, 1 dosyanın değiştiğini ve dosyaya 76 satır eklendiğini belirtir.
 
 Commit işleminden sonra tekrar `git status` çalıştırdığımızda:
 
-```plaintext
+```diff
 On branch main
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-    .DS_Store
-    .idea/
-    02-Git Temelleri.md
+-   .DS_Store
+-   .idea/
+-   02-Git Temelleri.md
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
@@ -114,7 +114,7 @@ Commit edilen dosya artık listede yer almaz. Henüz commit edilmemiş veya ekle
 
 Örnek çıktı:
 
-```plaintext
+```diff
 commit 8bcf1d0cfc80228dfde5c1812ea27cdf313de24a (HEAD -> main)
 Author: Eray Dilmen <eraydilmen5@gmail.com>
 Date:   Tue Aug 25 14:47:59 2026 +0300
@@ -134,18 +134,18 @@ Bu çıktıda yer alan bilgiler:
 
 Daha önce commit'lediğimiz `01-Terminal Komutları ve giriş.md` dosyası üzerinde yeni bir değişiklik yapıp kaydettiğimizde, `git status` çıktısı şu şekilde olur:
 
-```plaintext
+```diff
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-    modified:   01-Terminal Komutları ve giriş.md
+-   modified:   01-Terminal Komutları ve giriş.md
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-    .DS_Store
-    .idea/
-    02-Git Temelleri.md
+-   .DS_Store
+-   .idea/
+-   02-Git Temelleri.md
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
@@ -164,7 +164,7 @@ En altta yer alan `git commit -a` (veya `git commit -am "mesaj"`) komutu, daha �
 
 `01-Terminal Komutları ve giriş.md` dosyasını değiştirip tekrar commit ettikten sonra loga bir daha bakıyoruz:
 
-```plaintext
+```diff
 commit dbe0bf92cf6b911347bf573cbb32eec3511620de (HEAD -> main)
 Author: Eray Dilmen <eraydilmen5@gmail.com>
 Date:   Tue Aug 25 15:01:32 2026 +0300
@@ -203,32 +203,31 @@ Git'in görmezden geleceği (takip etmeyeceği) dosya ve klasörleri belirtmemiz
 
 `.gitignore`'a eklemeden önce `git status` ile bakalım:
 
-```plaintext
+```diff
 On branch main
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-    .DS_Store
-    .gitignore
-    .idea/
-    02-Git Temelleri.md
-    gizli.txt
+-   .DS_Store
+-   .gitignore
+-   .idea/
+-   02-Git Temelleri.md
+-   gizli.txt
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
-
 
 `gizli.txt` dosyası başlangıçta untracked listesinde gözüküyor.
 
 Şimdi `.gitignore` dosyası içerisine `gizli.txt` yazıp kaydediyoruz ve tekrar `git status` yapıyoruz:
 
-```plaintext
+```diff
 On branch main
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-    .DS_Store
-    .gitignore
-    .idea/
-    02-Git Temelleri.md
+-   .DS_Store
+-   .gitignore
+-   .idea/
+-   02-Git Temelleri.md
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
@@ -240,16 +239,16 @@ Görüldüğü üzere `gizli.txt` artık burada gözükmüyor bile. Yanlışlık
 
 Şimdi `.gitignore` dosyasını commit'leyelim ve ardından `gizli.txt` dosyasına bir şeyler yazalım.
 
+```diff
 On branch main
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-	.DS_Store
-	.idea/
-	02-Git Temelleri.md
+-	.DS_Store
+-	.idea/
+-	02-Git Temelleri.md
 
 nothing added to commit but untracked files present (use "git add" to track)
-
+```
 ---
 
 hiçbir şekilde gizli.txt gelmiyor bunu görmüş olduk.
-
