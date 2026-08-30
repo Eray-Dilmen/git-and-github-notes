@@ -53,6 +53,29 @@ HEAD is now at 7bf82b0 giris cümlesi yazıldı
 * Tekrar güncel ana dala dönmek için: `git switch main`
 * Eğer o eski noktadan itibaren yeni bir geliştirme başlatmak isterseniz: `git switch -c <yeni-dal-adi>`
 
+
+---
+
+### Göreceli Referanslar ile Commit'ler Arasında Gezinme (`^` ve `~`)
+
+Eski commit'lere gitmek için her zaman uzun commit hash kodunu yazmak zorunda değiliz. Git'te `^` (şapka) ve `~` (tilde) işaretlerini kullanarak bulunduğumuz noktaya veya belirli bir branch/commit'e göre geriye doğru hareket edebiliriz.
+
+* **`^` (Caret / Şapka) ile 1 Adım Geriye Gitme:** Belirtilen referansın bir önceki commit'ine (ebeveynine) geçiş yapar.
+  * `git checkout HEAD^`: Bulunduğumuz aktif commit'ten 1 önceki commit'e gider.
+  * `git checkout main^`: `main` branch'inin işaret ettiği en son commit'in 1 önceki commit'ine gider.
+  * `git checkout bugFix^`: `bugFix` branch'inin bulunduğu noktadan 1 önceki commit'e gider.
+  * `git checkout <hash>^`: Belirtilen hash değerine sahip commit'in hemen 1 önceki commit'ine geri döner.
+  *(Not: `HEAD^^` şeklinde yan yana yazarak 2 commit geriye de gidilebilir.)*
+
+* **`~` (Tilde) ile Çok Sayıda Commit Geriye Gitme:** Geriye doğru birden fazla adım atmak istediğimizde tek tek `^^^` yazmak yerine `~<sayı>` yapısını kullanırız.
+  * `git checkout HEAD~4`: Bulunduğumuz yerden 4 commit geriye gider.
+  * `git checkout main~3`: `main` dalının son halinden 3 commit önceki duruma döner.
+  * `git checkout <hash>~2`: İlgili commit'in 2 adım öncesine geçiş yapar.
+
+> **Klavye İpuçları (`~` Tilde İşareti):**
+> * **Mac:** `Option + N` tuşlarına basılır (ekrana karakter doğrudan gelmezse ardından `Space` tuşuna basılması gerekir).
+> * **Windows:** `Alt Gr + Ü` tuşlarına basılır (ardından ekrana basılması için `Space` tuşuna basılır).
+
 ---
 
 ### 3. Commit'leri Kalıcı Olarak Geri Alma (`git reset`)
